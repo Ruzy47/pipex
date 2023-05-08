@@ -6,7 +6,7 @@
 /*   By: rugrigor <rugrigor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 10:53:17 by rugrigor          #+#    #+#             */
-/*   Updated: 2023/05/08 23:05:49 by rugrigor         ###   ########.fr       */
+/*   Updated: 2023/05/09 00:04:31 by rugrigor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,7 @@ int	main(int argc, char **argv, char **envp)
 		ft_perror("Ruzik_ERROR");
 	pipex.a = open(argv[1], O_RDONLY);
 	pipex.b = open(argv[argc - 1], O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	if ((pipex.a == -1 && pipex.b > -1
-		&& argv[3][0] != 'l' && argv[3][1] != 's')
-		|| pipex.b == -1 || pipe(pipex.fd) == -1)
+	if (pipex.b == -1 || pipe(pipex.fd) == -1)
 		ft_perror("Ruzik_ERROR");
 	pipex.path = get_path(envp);
 	main2(&pipex, argv, envp);
